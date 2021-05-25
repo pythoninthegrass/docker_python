@@ -4,7 +4,7 @@
 * Install [docker-compose](https://docs.docker.com/compose/install/)
 * Clone repo by one of the following ways
     * `git clone https://github.com/pythoninthegrass/docker-python.git`
-    * Open in [GitHub Desktop](x-github-client://openRepo/https://github.com/pythoninthegrass/docker-python)
+    * Open in GitHub Desktop
 
 ## Usage
 * Start web server
