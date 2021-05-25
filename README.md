@@ -2,7 +2,9 @@
 
 ## Setup
 * Install [docker-compose](https://docs.docker.com/compose/install/)
-* `git clone`
+* Clone repo by one of the following ways
+    * `git clone https://github.com/pythoninthegrass/docker-python.git`
+    * Open in [GitHub Desktop](x-github-client://openRepo/https://github.com/pythoninthegrass/docker-python)
 
 ## Usage
 * Start web server
@@ -54,5 +56,5 @@
     ```
 
 ## TODO
-* Add GitHub URL
+* ~~Add GitHub URL~~
 * Convert `pip` to `pipenv`
