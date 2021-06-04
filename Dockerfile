@@ -29,14 +29,11 @@ ENV PATH="/opt/venv/bin:$PATH"
 # TODO: `pipenv`
 # Install pip requirements
 COPY requirements.txt .
-RUN pip3 install --no-cache-dir wheel && pip3 install --no-cache-dir -r requirements.txt
-
-# We clean up a lot of space by deleting rogue .c files etc (redirect exit code as success to continue when no files are removed)
-RUN find /usr/local/lib/python3.9 -name '*.c' -delete || echo "No leftover *.c files"
-RUN find /usr/local/lib/python3.9 -name '*.pxd' -delete || echo "No leftover *.pxd files"
-RUN find /usr/local/lib/python3.9 -name '*.pyd' -delete || echo "No leftover *pyd files"
-# Cleaning up __pycache__ gains more space
-RUN find /usr/local/lib/python3.6 -name '__pycache__' | xargs rm -r || echo "__pycache__ is empty"
+RUN pip3 install --no-cache-dir wheel && pip3 install --no-cache-dir -r requirements.txt && \
+    find /usr/local/lib/python3.9 -name '*.c' -delete || echo "No leftover *.c files" && \
+    find /usr/local/lib/python3.9 -name '*.pxd' -delete || echo "No leftover *.pxd files" && \
+    find /usr/local/lib/python3.9 -name '*.pyd' -delete || echo "No leftover *pyd files" && \
+    find /usr/local/lib/python3.6 -name '__pycache__' | xargs rm -r || echo "__pycache__ is empty"
 
 FROM ubuntu:20.04 AS runner-image
 RUN apt-get update && apt-get install --no-install-recommends -y python3.9 python3.9-venv && \
